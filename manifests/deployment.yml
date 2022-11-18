@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: vincentchwongpipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vincentchwongpipelinesjavascriptdocker
+  template:
+    metadata:
+      labels:
+        app: vincentchwongpipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: vincentchwongpipelinesjavascriptdocker 
+          image: icodevcr.azurecr.io/vincentchwongpipelinesjavascriptdocker
+          ports:
+          - containerPort: 8080
