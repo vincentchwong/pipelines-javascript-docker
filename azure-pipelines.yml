@@ -74,7 +74,7 @@ stages:
               script: |
                 git config --global user.email "vincentchwong@gmail.com"
                 git config --global user.name "Vincent Wong"
-                git clone https://vincentchwong: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@github.com/vincentchwong/k8s-deploy-app.git
+                git clone https://vincentchwong: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@github.com/vincentchwong/k8s-deploy-app.git
                 cd k8s-deploy-git/pipelines-javascript-docker/manifests/overlays/dev
                 cat << EOF | tee kustomization.yaml
                 bases:
