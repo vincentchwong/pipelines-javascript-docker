@@ -89,5 +89,5 @@ stages:
                 - name: icodevcr.azurecr.io/vincentchwongpipelinesjavascriptdocker
                   newTag: "$(tag)"
                 EOF
-                git commit -am "Image Tag Update"
+                git commit -am "Image Tag Update: $(tag)"
                 git push origin master
