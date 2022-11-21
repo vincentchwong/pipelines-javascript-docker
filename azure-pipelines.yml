@@ -17,7 +17,7 @@ variables:
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'icodevcr16429d93-auth'
-  gitPubKey: $(argocd_key_pub)
+  sshPubKey: $(argocd_key_pub)
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -72,7 +72,8 @@ stages:
           - task: InstallSSHKey@0
             inputs:
               knownHostsEntry: 'github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ=='
-              sshPublicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQD13njcTt/xKccubahpMa4iblkSjEAvQCjrocy6Lei/S9Y2xuxZldPcRVIe0rbq0DEFXqYejqTMw9zzC7xIRjTIyRwiJhjRwWWeaLCek8dlByEvx9b8ZLFAhCNGwHlMJ623CizziAZHWRufaQblcwEiOMqKV1zfxiKpZ7oHexXtd2mcVZe9kiYOfr5uijIRLqfU1HJ8XfhqCOqfpxOaqCdJFs5cMepKPpIQG+ZipBUal80gliae69d30O5eyf7GlSAPPAzCfmUK4qV7aqmgTjC66cOWm/CjLzzPVEdt5xiuJn9p3LbSgkSAk0rK0ARtXm4XLaJ9vtrmqz00p2RWopZrYzTTlAsKMy38r5hJ7rBmmwazfvLTSGQfWe5rNi79rlIdxxX0dt78BP8DeM4AVjEpMaUrIoeA6IZPlF3AUTmMD8M9TuRrmi9e4ui/09bwgoDrHuFL15dbtolZwkGFKzEEi0cw8ZE3owsXbCvDmwriOyX9S8wM+cJq3xTRrnufTcYDRL/ozq1QwcDWAYJ3IhMBjz+xSgq7we6dISE8jr+YyuUTxSHj136ipHs0LJ88Hjz5gERPV4Q8DiDdlbkMz6YspMFLll/qN1oPcwuze1sLSWtml0vCYaGN4Q5h/qKyL5TclwCgk7CoJD+6O35e4W/9lo9IZj3YTJNywnqP0wRCwQ== ansadmin@icodev-vw'
+#              sshPublicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQD13njcTt/xKccubahpMa4iblkSjEAvQCjrocy6Lei/S9Y2xuxZldPcRVIe0rbq0DEFXqYejqTMw9zzC7xIRjTIyRwiJhjRwWWeaLCek8dlByEvx9b8ZLFAhCNGwHlMJ623CizziAZHWRufaQblcwEiOMqKV1zfxiKpZ7oHexXtd2mcVZe9kiYOfr5uijIRLqfU1HJ8XfhqCOqfpxOaqCdJFs5cMepKPpIQG+ZipBUal80gliae69d30O5eyf7GlSAPPAzCfmUK4qV7aqmgTjC66cOWm/CjLzzPVEdt5xiuJn9p3LbSgkSAk0rK0ARtXm4XLaJ9vtrmqz00p2RWopZrYzTTlAsKMy38r5hJ7rBmmwazfvLTSGQfWe5rNi79rlIdxxX0dt78BP8DeM4AVjEpMaUrIoeA6IZPlF3AUTmMD8M9TuRrmi9e4ui/09bwgoDrHuFL15dbtolZwkGFKzEEi0cw8ZE3owsXbCvDmwriOyX9S8wM+cJq3xTRrnufTcYDRL/ozq1QwcDWAYJ3IhMBjz+xSgq7we6dISE8jr+YyuUTxSHj136ipHs0LJ88Hjz5gERPV4Q8DiDdlbkMz6YspMFLll/qN1oPcwuze1sLSWtml0vCYaGN4Q5h/qKyL5TclwCgk7CoJD+6O35e4W/9lo9IZj3YTJNywnqP0wRCwQ== ansadmin@icodev-vw'
+              sshPublicKey: $(sshPubKey)
               sshKeySecureFile: 'argocd_key.pem'
 
           - task: Bash@3
