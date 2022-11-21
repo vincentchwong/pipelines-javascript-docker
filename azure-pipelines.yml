@@ -17,6 +17,7 @@ variables:
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'icodevcr16429d93-auth'
+  gitPubKey: $(argocd_key_pub)
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -80,7 +81,7 @@ stages:
               script: |
                 git config --global user.email "vincentchwong@gmail.com"
                 git config --global user.name "Vincent Wong"
-                git clone https://github.com/vincentchwong/k8s-deploy-app.git
+                git clone https://vincentchwong@github.com/vincentchwong/k8s-deploy-app.git
                 cd k8s-deploy-git/pipelines-javascript-docker/manifests/overlays/dev
                 cat << EOF | tee kustomization.yaml
                 bases:
